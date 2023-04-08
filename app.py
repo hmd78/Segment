@@ -1,7 +1,7 @@
 import streamlit as st
 import inference
 
-# @st.cache_resource
+@st.cache_resource
 def get_model():
   print('\n\n\n\n------start making object---------\n\n')
 
@@ -15,10 +15,15 @@ uploaded_file = st.sidebar.file_uploader("Choose a file")
 if uploaded_file is not None:
     # To read file as bytes:
     bytes_data = uploaded_file.getvalue()
+    col1, col2, col3 = st.columns(3)
     print('\n\n\n\n------making inference-------\n\n\n\n')
     inferer.make_inference(bytes_data, is_binary=True)
     get_model.clear()
     print('\n\n\n\n\nshowing uploaded image\n\n\n\n')
-    st.image(bytes_data, caption = "Uploaded Image", width=700)
+    with col1 :
+      st.image(bytes_data, caption = "Uploaded Image")
     print('\n\n\nshowing result image\n\n\n')
-    st.image('./results/result.jpg', caption='Segmentation result', width=700)
+    with col2:
+      st.image('./results/result.jpg', caption='Segmentation result')
+    with col3:
+      st.image('./results/result_mask.jpg', caption='Only masks')

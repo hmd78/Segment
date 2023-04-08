@@ -3,6 +3,7 @@ from mmengine.visualization import Visualizer
 from mmdet.apis import init_detector, inference_detector
 from mmengine.config import Config
 from mmengine.runner import Runner
+import visualizer
 import sys
 import argparse
 
@@ -44,6 +45,16 @@ class Inference():
         out_file=self.res_dest
     )
     visualizer_now.show()
+    vis = visualizer.DetLocalVisualizer(save_dir='./save_dir/')
+    vis.add_datasample(
+    'mask_result',
+    img,
+    data_sample=new_result,
+    draw_gt=False,
+    wait_time=0,
+    pred_score_thr = 0.3,
+    out_file=self.res_dest[:-4]+'_mask'+'.jpg'
+    )
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
