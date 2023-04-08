@@ -20,8 +20,12 @@ class Inference():
         self.res_dest = result_dest
 
 
-  def make_inference(self, image_file, pred_thr):
-    img = mmcv.imread(image_file,channel_order='rgb')
+  def make_inference(self, image_file, pred_thr, is_binary=False):
+    if not is_binary:
+        img = mmcv.imread(image_file,channel_order='rgb')
+    else:
+        img = mmcv.imfrombytes(image_file)
+        img = mmcv.bgr2rgb(img)
     # checkpoint_file = checkpoint
     # model = init_detector(config, checkpoint_file, device='cpu')
 
