@@ -43,3 +43,9 @@ streamlit run ./app.py
 ```
 ## Model Comparison
 To see reports about model comparison with YOLOv8 refer to ```model_comparison.pdf```
+## Dataset Report
+To get a report from a COCO dataset use ```utils/dataset_report.py```
+arguments are annotation file and dataset images directory :
+```
+python ./utils/dataset_report.py --ann ./instances.json --data-dir ./dataset/train
+```
