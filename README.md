@@ -1,4 +1,6 @@
-![RTMDet segmentation result sample] (./gr1.jpg)
+<p align="center"><img src="./gr1.jpg" width="400" alt="RTMDet segmentation example" class="center"></p>
+
+
 # Instance segmentation using RTMDet
 RTMDet is state-of-the-art architecture for real-time instance segmentation\
 and this repo contains codes to train and inference using this model
